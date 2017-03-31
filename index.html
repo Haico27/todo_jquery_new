@@ -86,11 +86,11 @@
 
     <ul id="todolist">
       <li class="todo">
-        <input id="todo-1" type="checkbox">
+        <input id="todo-1" type="checkbox" value="1">
         <label for="todo-1">Sweep the floor</label>
       </li>
       <li class="todo completed">
-        <input id="todo-2" type="checkbox" checked="checked">
+        <input id="todo-2" type="checkbox" value="1" checked="checked">
         <label for="todo-2">Dust the vases</label>
       </li>
     </ul>
@@ -102,13 +102,12 @@
   </div>
 
   <script>
-
   	function toggleDone() {
       var checkbox = this;
 
       $(checkbox).parent().toggleClass("completed");
 
-      updateCounters()
+      updateCounters();
     }
 
 
@@ -124,9 +123,10 @@
 
     $(document).ready(function() {
       $("input[type=checkbox]").bind('change', toggleDone);
+      updateCounters();
     });
 
-    $(".form").bind('submit', submitTodo);
+    $("form").bind('submit', submitTodo);
 
     function submitTodo(event) {
       event.preventDefault();
@@ -155,7 +155,7 @@
       var space = document.createTextNode(" ");
 
       var label = $('<label></label>');
-      label.atrr('for', checkboxId);
+      label.attr('for', checkboxId);
       label.html(title);
 
       listItem.append(checkbox);
